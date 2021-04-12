@@ -12,6 +12,18 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header'%>
+
+    <div class='flex flex-row h-screen text-gray-900 bg-gray-100'>
+      <%= render 'layouts/sidebar' %>
+
+      <main class='w-full'>
+        <div class='h-full'>
+          <%= yield %>
+        </div>
+        <%= render 'layouts/footer' %>
+      </main>
+    </div>
   </body>
 </html>
+
