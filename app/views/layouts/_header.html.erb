@@ -1,3 +1,12 @@
-<nav class='py-4 text-center text-red-500 bg-indigo-50'>
-  Order System
+<nav class='flex justify-between py-4 px-7 text-center bg-indigo-50'>
+  <div class='text-blue-300 ml-4'>
+    Order System
+  </div>
+  <div class='flex'>
+    <% if current_user %>
+      <span class='mr-4'><%= current_user.email %></span>
+      <%= link_to 'Logout', log_out_path, class: 'text-white text-red-300 hover:text-red-600 focus:text-red-700' %>
+    <% else %>
+    <% end %>
+  </div>
 </nav>
