@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'factory_bot_rails'
 
-FactoryBot.create(:user, email: 'a@b.com', password: 'password', role: :admin)
+FactoryBot.create(:user, email: 'test@test.com', password: 'password', role: :admin)
 
-10.times do
+6.times do
   user = FactoryBot.create(:user, role: [:admin, :normal].sample)
-  rand(20).times do
-    FactoryBot.create(:order, status: [:prepare, :processing, :done].sample)
+  6.times do
+    FactoryBot.create(:order, user: user, status: [:prepare, :processing, :done].sample)
   end
 end

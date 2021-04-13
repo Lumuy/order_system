@@ -3,7 +3,7 @@ class Order < ApplicationRecord
 
   belongs_to :user
 
-  before_save :send_email, if: :will_save_change_to_status?
+  after_save :send_email, if: :will_save_change_to_status?
 
   scope :with_status, -> (status) { where(status: status) }
   scope :with_user_email, -> (user_email) {
@@ -30,6 +30,7 @@ class Order < ApplicationRecord
   private
 
   def send_email
+    UserMailer.with(user: user, order: self).notification_email.deliver_later
   end
 end
 
