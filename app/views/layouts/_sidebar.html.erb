@@ -44,13 +44,7 @@
           </span>
         </a>
         <div role="menu" x-show="open" class="mt-2 space-y-2 px-7" aria-label="Dashboards">
-          <a
-            href="#"
-            role="menuitem"
-            class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md hover:text-gray-700"
-          >
-            Orders
-          </a>
+          <%= link_to 'Orders', orders_path, class: "block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md hover:text-gray-700" %>
         </div>
       </div>
     </nav>

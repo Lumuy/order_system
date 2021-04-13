@@ -14,11 +14,11 @@
   <body>
     <%= render 'layouts/header'%>
 
-    <div class='flex flex-row h-screen text-gray-900 bg-gray-100'>
+    <div class='flex flex-row min-h-screen text-gray-900 bg-gray-100'>
       <%= render 'layouts/sidebar' %>
 
       <main class='w-full'>
-        <div class='h-full'>
+        <div>
           <%= yield %>
         </div>
         <%= render 'layouts/footer' %>

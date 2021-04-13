@@ -1,0 +1,8 @@
+<%= form_with model: Order.new, url: filter_orders_path, class: 'flex' do |f| %>
+   <%= f.select :status, ['prepare', 'processing', 'done'],
+      { include_blank: 'all', selected: @filters['status'] },
+      class: 'form-select mt-1 block w-full', onchange: 'this.form.submit();' %>
+   <%= f.select :user_email, User.email_select_options(current_user),
+      { include_blank: 'all', selected: @filters['user_email'] },
+      class: 'form-select mt-1 block w-full', onchange: 'this.form.submit();' %>
+<% end %>

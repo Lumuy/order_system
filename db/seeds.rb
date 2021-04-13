@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'factory_bot_rails'
+
+FactoryBot.create(:user, email: 'a@b.com', password: 'password', role: :admin)
+
+10.times do
+  user = FactoryBot.create(:user, role: [:admin, :normal].sample)
+  rand(20).times do
+    FactoryBot.create(:order, status: [:prepare, :processing, :done].sample)
+  end
+end

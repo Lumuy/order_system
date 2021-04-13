@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new', as: 'sign_up'
   match 'sessions', to: 'sessions#create', via: :post
 
-  resources :orders
+  post 'filter_orders', to: 'orders#filter'
+  resources :orders, only: [:index, :edit, :update]
 end

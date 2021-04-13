@@ -1,4 +1,4 @@
-<nav class='flex justify-between py-4 px-7 text-center bg-indigo-50'>
+<nav class='flex justify-between py-4 px-7 text-center bg-indigo-100'>
   <div class='text-blue-300 ml-4'>
     Order System
   </div>
@@ -7,6 +7,8 @@
       <span class='mr-4'><%= current_user.email %></span>
       <%= link_to 'Logout', log_out_path, class: 'text-white text-red-300 hover:text-red-600 focus:text-red-700' %>
     <% else %>
+      <%= link_to 'Login', log_in_path, class: 'text-white text-blue-300 hover:text-blue-600 focus:text-blue-700' %>
     <% end %>
   </div>
 </nav>
+

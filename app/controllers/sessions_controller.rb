@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :check_login_status, only: :new
+
   def new
   end
 
@@ -21,6 +23,10 @@ class SessionsController < ApplicationController
 
   def user_params
     params.require(:user_id).permit(:email, :password)
+  end
+
+  def check_login_status
+    redirect_to orders_path if current_user
   end
 end
 

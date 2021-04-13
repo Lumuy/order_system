@@ -1,16 +1,22 @@
 class User < ApplicationRecord
   attr_accessor :password_confirmation
 
-  enum role: [:admin, :normal]
+  enum role: [:normal, :admin]
 
   has_many :orders, dependent: :destroy
 
   before_save :encrpt_password
 
   validates_confirmation_of :password_confirmation
-  validates :email, allow_nil: false,
+  validates :email, allow_nil: true,
                     uniqueness: true,
                     format: { with: /\A[a-z\d\-\_\.]+@[a-z\.]+\.[a-z]+\z/i, on: :create }
+
+  class << self
+    def email_select_options(user)
+      user.admin? ? pluck(:email) : [user.email]
+    end
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)
